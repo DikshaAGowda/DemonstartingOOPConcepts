@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,6 +17,18 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
     <title>Index Page</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        img {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 500px;
+        }
+
+        </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: aliceblue;">
@@ -72,48 +84,209 @@
     </div>
 </nav>
 
-<div class="text-center">
-    <h3 class="display-4"><b>Know About Pylint</b></h3>
-
+<div class="jumbotron text-center">
+    <h1 class="display-5">Know about Pylint</h1>
+    <p class="lead">This article explains the implementation of Pylint and few terminologies in Object-Oriented Programming.</p>
 </div>
+
+
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-7">
-            <div class="mt-4"></div>
-            <p>
-            <h5>Pylint</h5>
-            <b>First let us see what is pylint?</b><br>
-            The biggest problem to address is to understand the code written by others, which might be useful in solving our coding error. This can get worse if there are no explanatory things like comments, docstrings in the code. As a programmer, we should make our code readable and understandable.
-            To address such situations, Python provides a module called pylint.
-            </p>
+        <h5>Pylint</h5>
+        <p><br><b>First let us see what is pylint?</b><br>The biggest problem to address is to understand the code written by others, which might be useful in solving our coding error. This can get worse if there are no explanatory things like comments, docstrings in the code. As a programmer, we should make our code readable and understandable.To address such situations, Python provides a module called pylint.
+        </p>
+        <div>
+        <b>Pylint is a tool with the following functions:</b>
+        <ul><li>It lists the errors which comes after the execution of the Python code.</li>
+        <li>Coding standard is enforced and looks for code smells.</li>
+        <li>Suggestion of how a particular block can be updated.</li>
+        <li>It offers details about code’s complexity.</li></ul></div>
+        <div>
+            <b>Installation</b>
+            First Python has to installed to PC. Open the command prompt(Windows) / terminal(Linux) on your PC and type the following command <br>
+            <ul><i>pip install pylint</i></ul>
+        To verify the installtion, type the following command: <br>
+        <ul><i>pylint --versi</i></ul>
 
         </div>
-        <div class="col-sm-7">
-            <div class="mt-4"></div>
-            <div class="card border rounded">
-                <img src="./images/question.jpeg" class="card-img-top" alt="pic1">
-                <div class="card-body">
-                    <h5 class="card-title">What is it?</h5>
-                </div>
+    <div>
+    <b>Running</b>
+        <ul><i>pylint [options] modules_or_packages</i></ul>
+
+        The above command is used for running the pylint. Here,the name of a python package or module, or some number of packages or modules, should be given by you. Pylint does not import the package or module. Attention should be given to <b>PYTHONPATH</b>, as it is one of the well known mistake to analyze an installed version rather than a development version.
+        You can analyze the python files with a few restrictions. First to note is that the Pylint will try to convert the file name to a module name and the file is processed only if the conversion succeeds.
+
+        <ul><i>pylint working_module.py</i></ul>
+    </div>
+        <div>
+            <b>Calling PYTHON from another PYTHON Program</b>
+            <ul><i>import pylint.lint<br>
+                pylint_opts = ['--disable=line-too-long', 'myfile.py']<br>
+                pylint.lint.Run(pylint_opts)</i></ul>
+
+
+            Run Pylint on a module_name.py module, and get its standard output and error:
+            <ul><i>from pylint import epylint as lint<br>
+                (pylint_stdout, pylint_stderr) = lint.py_run('module_name.py', return_std=True)</i></ul>
+
+            We can add additional Pylint options in the first argument to py_run:
+            <ul><i>from pylint import epylint as lint<br>
+            (pylint_stdout, pylint_stderr) = lint.py_run('module_name.py --disable C0114', return_std=True)</i></ul>
+            The options --msg-template="{path}:{line}: {category} ({msg_id}, {symbol}, {obj}) {msg}" and --reports=n are set implicitly inside the epylint module. Following are some of the options.
+
+        </div>
+
+
+
+        <table>
+            <tr>
+                <th>Options</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>--version</td>
+                <td>show program's version number and exit</td>
+            </tr>
+            <tr>
+                <td>-h,--help</td>
+                <td> show help about the command line options</td>
+            </tr>
+            <tr>
+                <td>
+                    --output-format</td>
+                <td>Select output format (text, json, custom).</td>
+            </tr>
+        </table>
+    </div>
+    <h6></h6>
+    <div >
+        <h5>Object Oriented Programming</h5>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Class and Objects</h5>
+
+
+        <p class="card-text"> <b>Class:</b> A class is a blueprint that defines the variables and the methods common to all objects of a certain kind. It is a building block with user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class.
+
+            Consider the Class of Cars. There may be many cars with different names and brand but all of them will share some common properties like all of them will have 4 wheels, Speed Limit, name,brand etc. So here, Car is the class and wheels, name, brand are their properties.
+        </p>
+        <p class="card-text"> <b>Object:</b> An Object is an identifiable entity with some characteristics and behaviour. An Object is an instance of a Class. When a class is defined, no memory is allocated but when it is instantiated (i.e. an object is created) memory is allocated.
+
+        In the following example, BMW, Audi, Mercedes are objects of the class car.</p>
+        <div class="text-center" style="width:25rem">
+            <img src="./images/cars.jpeg" class="card-img-top"
+                 alt="Load image">
+
+        </div>
+
+    </div>
+    <div class="card">
+        <h5 class="card-header">Namespace</h5>
+
+
+        <p class="card-text"> <b>Namespace:</b>  A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries. All identifiers at namespace scope are visible to one another without qualification. Identifiers outside the namespace can access the members by using the fully qualified name for each identifier, for example std::vector &#60;std::string&#62; vec;, or else by a using Declaration for a single identifier (using std::string), or a using Directive for all the identifiers in the namespace (using namespace std;). Code in header files should always use the fully qualified namespace name.</p>
+
+        <p class="card-text">You can think of a namespace as a dictionary in
+            which the keys
+            are the object names and the values are the objects themselves. Each key-value pair maps a name
+            to its
+            corresponding object.</p>
+
+
+    </div>
+    <div class="card">
+        <h5 class="card-header">Namespace</h5>
+
+
+        <p class="card-text"> <b>Namespace:</b>  A namespace is a declarative region that provides a scope to the identifiers (the names of types, functions, variables, etc) inside it. Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries. All identifiers at namespace scope are visible to one another without qualification. Identifiers outside the namespace can access the members by using the fully qualified name for each identifier, for example std::vector &#60;std::string&#62; vec;, or else by a using Declaration for a single identifier (using std::string), or a using Directive for all the identifiers in the namespace (using namespace std;). Code in header files should always use the fully qualified namespace name.</p>
+
+        <p class="card-text">You can think of a namespace as a dictionary in
+            which the keys
+            are the object names and the values are the objects themselves. Each key-value pair maps a name
+            to its
+            corresponding object.</p>
+
+
+    </div>
+
+    <div class="card">
+        <h5 class="card-header">Constructors</h5>
+
+
+        <p class="card-text"> <b>Constructor:</b>  Constructor is used for initializing the instance members when we create the object of a class. Given below is the example of constructor for car class.</p>
+        There are two types of constructors. There are:
+        <ul><li><b>default constructor:</b>This constructor doesn’t accept any arguments. </li>
+               <li> <b>parameterized constructor:</b>This can be seen in the below code. Constructor with parameters is known as parameterized constructor.</li></ul>
+        <div class="text-center" style="width:40rem">
+            <img src="./images/constructor.PNG" class="card-img-top"
+                 alt="Load image">
+
+        </div>
+
+    </div>
+
+    <div class="card">
+        <h5 class="card-header">Fixtures</h5>
+
+
+        <p class="card-text"> <b>Fixtures:</b> Fixtures define the steps and data that constitute the arrange phase of a test (see Anatomy of a test). In pytest, they are functions you define that serve this purpose. They can also be used to define a test's act phase; this is a powerful technique for designing more complex tests.</p>
+
+    </div>
+
+    <div class="card">
+        <h5 class="card-header">Typehint</h5>
+        <p class="card-text"><b> Typehint:</b>Type hinting is a formal solution to statically indicate the type of value within your Python code. It was specified in PEP 484 and introduced in Python 3.5. Here's an example of adding type information to a function</p>
+
+
+
+        </div>
+
+
+
+
+
+<div class="card">
+    <h5 class="card-header">Typecasting</h5>
+
+
+    <p class="card-text"> <b>TypeCasting:</b> Type casting is a method used to change the variables/ values declared in a certain data type into a different data type to match the operation required to be performed by the code snippet. In python, this feature can be accomplished by using constructor functions like int(), string(), float(), etc</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h5 class="card-header">Facade</h5>
+<p class="card-text">Facade is a structural design pattern that provides a simplified (but limited)
+    interface to
+    a complex system of classes, library or framework.</p>
+
+</div>
+
+    <div class="card">
+        <h5 class="card-header">Typecasting</h5>
+
+
+        <p class="card-text"> <b>TypeCasting:</b> Type casting is a method used to change the variables/ values declared in a certain data type into a different data type to match the operation required to be performed by the code snippet. In python, this feature can be accomplished by using constructor functions like int(), string(), float(), etc</p>
+
+    </div>
+
+
+
+</div>
+</div>
+
+
+
+
+
+        <div class="card text-center">
+            <div class="card-footer text-dark">
+                Diksha Anantha Gowda &#169;
+                <a href="https://validator.w3.org/#validate_by_uri">W3C Validator</a>
             </div>
         </div>
-
-    </div>
-
-
-
-
-</div>
-
-
-
-
-<div class="card text-center">
-    <div class="card-footer text-dark">
-        Diksha Anantha Gowda &#169;
-        <a href="https://validator.w3.org/#validate_by_uri">W3C Validator</a>
-    </div>
-</div>
 </body>
 </html>
